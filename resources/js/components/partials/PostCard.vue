@@ -22,7 +22,7 @@
 
 <script>
 export default {
-    name: 'Post',
+    name: 'PostCard',
     props: { postData: Object }
 }
 </script>

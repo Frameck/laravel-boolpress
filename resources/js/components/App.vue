@@ -3,7 +3,11 @@
         <Header></Header>
 
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <Post :postData="{ title: 'Prova', description: 'Descrizione', img: 'https://picsum.photos/300/200', id: '1' }"></Post>
+            <PostCard
+            v-for="(post, i) in postsList"
+            :key="post.id + i"
+            :postData="post">
+            </PostCard>
         </div>
 
         <Footer></Footer>
@@ -13,15 +17,22 @@
 <script>
 import Footer from './partials/Footer.vue'
 import Header from './partials/Header.vue'
-import Post from './partials/Post.vue'
+import PostView from './partials/PostView.vue'
+import PostCard from './partials/PostCard.vue'
 
 export default {
     name: 'App',
-    components: { Footer, Header, Post },
+    components: { Footer, Header, PostCard, PostView },
     data() {
         return {
-            msg: 'Titolo di prova da Vue JS'
+            msg: 'Titolo di prova da Vue JS',
+            postsList: []
         }
+    },
+    mounted() {
+        window.axios.get("/api/posts").then(res => {
+            this.postsList = res.data
+        })
     }
 }
 </script>
