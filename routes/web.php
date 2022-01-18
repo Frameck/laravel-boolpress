@@ -32,3 +32,6 @@ Route::namespace('Admin')
 Route::get('{any?}', function() {
     return view('guest.home');
 })->where('any', '.*');
+
+
+Route::resource('posts', 'PostController');
