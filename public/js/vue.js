@@ -779,6 +779,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "overflow-hidden" },
     [
       _c("Header"),
       _vm._v(" "),
@@ -786,7 +787,7 @@ var render = function () {
         "div",
         {
           staticClass:
-            "row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center",
+            "row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3",
         },
         _vm._l(_vm.postsList, function (post, i) {
           return _c("PostCard", { key: post.id + i, attrs: { postData: post } })
@@ -906,7 +907,7 @@ var staticRenderFns = [
                       _c(
                         "a",
                         {
-                          staticClass: "nav-link active",
+                          staticClass: "nav-link active mx-3",
                           attrs: { href: "/home" },
                         },
                         [_vm._v("Home")]

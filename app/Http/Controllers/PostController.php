@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller {
     function index() {  
-      $postsList = Post::all();
-      return $postsList;
+		$postsList = Post::all();
+		return $postsList;
     }
 }

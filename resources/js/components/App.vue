@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="overflow-hidden">
         <Header></Header>
 
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3">
             <PostCard
             v-for="(post, i) in postsList"
             :key="post.id + i"
