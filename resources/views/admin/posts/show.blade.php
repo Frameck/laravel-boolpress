@@ -1,10 +1,11 @@
 @extends('admin.layout')
 
-@section('content')
+@section('main-content')
     <div class="pt-5">
         <h1 class="mb-3">{{ $post->title }}</h1>
-        <p class="mb-5">{{ $post->description }}</p>
-        <img src="{{ $post->img }}" alt="" class="mb-3">
+        <span>Categoria: {{ $post->category->name }}</span>
+        <p class="mb-5">{!! $post->description !!}</p>
+        <img src="{{ $post->img }}" alt="{{ $post->title }}" class="mb-3">
 
         <div class="mt-5">
             <a class="btn btn-success" href="{{ route('admin.posts.index') }}">Torna alla home</a>

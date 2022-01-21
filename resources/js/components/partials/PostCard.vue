@@ -8,6 +8,8 @@
                 <div class="text-center">
                     <!-- Post name-->
                     <h5 class="fw-bolder">{{ postData.title }}</h5>
+                    <!-- Category -->
+                    <span class="bg-secondary rounded-pill p-1 text-light">{{ post.category.name }}</span>
                     <!-- Description-->
                     <p>{{ postData.description }}</p>
                 </div>

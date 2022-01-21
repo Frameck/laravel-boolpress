@@ -72,11 +72,11 @@
         </nav>
 
         <main style="height: calc(100vh - 55.05px)">
-            <div class="container-fluid" style="height: 100%">
-                <div class="row" style="height: 100%">
+            <div class="container-fluid h-100">
+                <div class="row h-100">
                     @include('admin.partials.sidebar')
                     <div class="col-10 d-inline-block text-center">
-                        @yield('content')
+                        @yield('main-content')
                     </div>
                 </div>
             </div>

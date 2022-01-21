@@ -244,6 +244,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostCard',
   props: {
@@ -990,6 +992,12 @@ var render = function () {
           _c("h5", { staticClass: "fw-bolder" }, [
             _vm._v(_vm._s(_vm.postData.title)),
           ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            { staticClass: "bg-secondary rounded-pill p-1 text-light" },
+            [_vm._v(_vm._s(_vm.post.category.name))]
+          ),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.postData.description))]),
         ]),

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller {
     function index() {  
-		$postsList = Post::all();
-		return $postsList;
+    $postList = Post::with("category")->get();
+		return $postList;
     }
 }
