@@ -29,6 +29,15 @@
                         @endforeach
                     </select>
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tag</label>
+                    <select name="tag" id="tag_field" class="form-control" multiple>
+                        @foreach($tagsList as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 
     
                 <button class="btn btn-primary" type="submit">Aggiungi</button>
