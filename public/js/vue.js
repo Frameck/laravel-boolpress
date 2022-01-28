@@ -115,6 +115,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -129,21 +154,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      postsList: []
+      postsList: [],
+      currentPage: 1,
+      lastPage: undefined
     };
   },
   methods: {
-    getData: function getData() {
+    getData: function getData(page) {
       var _this = this;
 
-      window.axios.get("/api/posts").then(function (res) {
-        console.log(res.data.data);
+      window.axios.get('/api/posts?page=' + page).then(function (res) {
+        console.log(res.data);
         _this.postsList = res.data.data;
+        _this.currentPage = res.data.current_page;
+        _this.lastPage = res.data.last_page;
       });
     }
   },
   mounted: function mounted() {
-    this.getData();
+    this.getData(1);
   }
 });
 
@@ -1438,8 +1467,14 @@ var render = function () {
     [
       _c("Header"),
       _vm._v(" "),
+      _vm.postsList.length === 0
+        ? _c("h2", { staticClass: "mb-5 text-center" }, [
+            _vm._v("\n        Ancora nessun dato disponibile...\n    "),
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _c(
-        "div",
+        "section",
         {
           staticClass:
             "row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3",
@@ -1449,6 +1484,80 @@ var render = function () {
         }),
         1
       ),
+      _vm._v(" "),
+      _c("div", { staticClass: "d-flex justify-content-center" }, [
+        _c(
+          "ul",
+          { staticClass: "pagination" },
+          [
+            _c("li", [
+              _c(
+                "button",
+                {
+                  staticClass: "page-link",
+                  on: {
+                    click: function ($event) {
+                      _vm.currentPage > 0
+                        ? _vm.getData(_vm.currentPage - 1)
+                        : _vm.getData(_vm.currentPage)
+                    },
+                  },
+                },
+                [_vm._v("\n                    Indietro\n                ")]
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.lastPage, function (page) {
+              return _c(
+                "li",
+                {
+                  key: page,
+                  staticClass: "page-item",
+                  class: { active: _vm.currentPage === page },
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function ($event) {
+                          return _vm.getData(page)
+                        },
+                      },
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(page) +
+                          "\n                "
+                      ),
+                    ]
+                  ),
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "button",
+                {
+                  staticClass: "page-link",
+                  on: {
+                    click: function ($event) {
+                      _vm.currentPage < _vm.lastPage
+                        ? _vm.getData(_vm.currentPage + 1)
+                        : _vm.getData(_vm.currentPage)
+                    },
+                  },
+                },
+                [_vm._v("\n                    Avanti\n                ")]
+              ),
+            ]),
+          ],
+          2
+        ),
+      ]),
       _vm._v(" "),
       _c("Footer"),
     ],
