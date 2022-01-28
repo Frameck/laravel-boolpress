@@ -9,17 +9,19 @@
             <div class="text-start mt-5">
                 <div class="mb-3">
                     <label for="field_title" class="form-label">Titolo del post</label>
-                    <input type="text" class="form-control" name="title" id="field_title">
+                    <input type="text" class="form-control" name="title" id="field_title" value="{{ old('title') ?? $post->title }}">
                 </div>
     
                 <div class="mb-3">
                     <label for="field_image" class="form-label">Immagine</label>
-                    <input type="url" class="form-control" name="img" id="field_image">
+                    <input type="url" class="form-control" name="img" id="field_image" value="{{ old('img') ?? $post->img }}">
                 </div>
                 
                 <div class="mb-3">
                     <label for="field_text" class="form-label">Contenuto</label>
-                    <textarea type="text" class="form-control" name="description" id="field_text" value="{{ old('description') ?? $post->description }}"></textarea>
+                    <textarea type="text" class="form-control" name="description" id="field_text">
+                        {{ old('description') ?? $post->description }}
+                    </textarea>
                 </div>
 
                 <div class="mb-3">

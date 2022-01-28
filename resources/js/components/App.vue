@@ -1,6 +1,9 @@
 <template>
     <div class="overflow-hidden">
-        <Header></Header>
+        <Header
+        title="Homepage Laravel Boolpress"
+        subtitle="Sottotitolo della homepage">
+        </Header>
 
         <!-- if no post is fetched from the database -->
         <h2 class="mb-5 text-center" v-if="postsList.length === 0">
@@ -15,7 +18,7 @@
             </PostCard>
         </section>
 
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mb-5">
             <ul class="pagination">
                 <li>
                     <button class="page-link" @click="(currentPage > 0) ? getData(currentPage - 1) : getData(currentPage)">

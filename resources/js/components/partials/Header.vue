@@ -21,8 +21,11 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Homepage Laravel Boolpress</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Benvenuto sulla più famosa alternativa a Wordpress</p>
+                    <h1 class="display-4 fw-bolder">{{ title }}</h1>
+                    <p class="lead fw-normal text-white-50 mb-0"
+                    v-if="subtitle">
+                        {{ subtitle }}
+                    </p>
                 </div>
             </div>
         </header>
@@ -31,7 +34,8 @@
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    props: { title: String, subtitle: String }
 }
 </script>
 

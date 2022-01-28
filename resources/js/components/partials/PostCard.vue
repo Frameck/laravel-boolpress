@@ -16,7 +16,12 @@
             </div>
             <!-- Post actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto" :href="`/posts/${postData.id}`">View details</a></div>
+                <div class="text-center">
+                    <router-link class="btn btn-outline-dark mt-auto" 
+                    :to="{ name: 'posts.show', params: { slug: postData.slug } }">
+                        View details
+                    </router-link>
+                </div>
             </div>
         </div>
     </div>

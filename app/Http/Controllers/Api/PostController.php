@@ -15,9 +15,12 @@ class PostController extends Controller
 		return response()->json($postList);
     }
 
-	public function show($id)
+	public function show($slug)
     {
-        $post = Post::where('id', $id)->first();
+        $post = Post::where('slug', $slug)
+                    ->with('category')
+                    ->with('tags')
+                    ->first();
         
         if (!$post) {
             throw new HttpException('Post not found');
