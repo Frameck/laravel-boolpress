@@ -25,14 +25,19 @@ export default {
     components: { Footer, Header, PostCard, PostView },
     data() {
         return {
-            msg: 'Titolo di prova da Vue JS',
             postsList: []
         }
     },
+    methods: {
+        getData() {
+            window.axios.get("/api/posts").then((res) => {
+                console.log(res.data.data)
+                this.postsList = res.data.data
+            })
+        },
+    },
     mounted() {
-        window.axios.get("/api/posts").then(res => {
-            this.postsList = res.data
-        })
+        this.getData()
     }
 }
 </script>

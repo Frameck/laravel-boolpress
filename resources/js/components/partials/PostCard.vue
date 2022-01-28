@@ -7,16 +7,16 @@
             <div class="card-body p-4">
                 <div class="text-center">
                     <!-- Post name-->
-                    <h5 class="fw-bolder">{{ postData.title }}</h5>
+                    <h5 class="mb-3">{{ postData.title }}</h5>
                     <!-- Category -->
-                    <span class="bg-secondary rounded-pill p-1 text-light">{{ post.category.name }}</span>
+                    <span class="bg-secondary rounded-pill py-1 px-2 text-light">{{ postData.category.name }}</span>
                     <!-- Description-->
-                    <p>{{ postData.description }}</p>
+                    <p class="mt-3">{{ postData.description }}</p>
                 </div>
             </div>
             <!-- Post actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/posts/1">View details</a></div>
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto" :href="`/posts/${postData.id}`">View details</a></div>
             </div>
         </div>
     </div>
@@ -25,7 +25,10 @@
 <script>
 export default {
     name: 'PostCard',
-    props: { postData: Object }
+    props: { postData: Object },
+    mounted() {
+        console.log(this.postData)
+    }
 }
 </script>
 
