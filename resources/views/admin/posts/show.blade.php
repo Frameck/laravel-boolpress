@@ -15,11 +15,11 @@
         <img src="{{ $post->img }}" alt="{{ $post->title }}" class="mb-3">
 
         <div class="mt-5">
-            <a class="btn btn-success" href="{{ route('admin.posts.index') }}">Torna alla home</a>
+            <a class="btn btn-success" href="{{ route('admin.posts.index', $post->slug) }}">Torna alla home</a>
 
-            <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->id) }}">Modifica</a>
+            <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->slug) }}">Modifica</a>
 
-            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="d-inline-block">
+            <form action="{{ route('admin.posts.destroy', $post->slug) }}" method="POST" class="d-inline-block">
                 @csrf
                 @method('delete')
                 <button class="btn btn-danger" type="submit">Elimina</button>
