@@ -10,12 +10,33 @@
             Ancora nessun dato disponibile...
         </h2>
 
-        <section class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center my-5 mx-3">
-            <PostCard
-            v-for="(post, i) in postsList"
-            :key="post.id + i"
-            :postData="post">
-            </PostCard>
+        <section class="row gx-4 gx-lg-5 justify-content-center my-5 mx-3">
+            <div class="col-9">
+                <div class="row row-cols-2">
+                    <PostCard
+                    v-for="(post, i) in postsList"
+                    :key="post.id + i"
+                    :postData="post">
+                    </PostCard>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <ul class="list-group">
+                    <li class="list-group-item text-center">
+                        <h6>Categorie</h6>
+                    </li>
+                    <li class="list-group-item list-group-item-action"
+                    v-for="(category, i) in categories"
+                    :key="category.name + i">
+                        <router-link 
+                        :to="{ name: 'category.show', params: { category: category.id } }"
+                        class="text-decoration-none text-dark">
+                            {{ category.name }}
+                        </router-link>
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <div class="d-flex justify-content-center mb-5">
@@ -55,21 +76,27 @@ export default {
         return {
             postsList: [],
             currentPage: 1,
-            lastPage: undefined
+            lastPage: undefined,
+            categories: []
         }
     },
     methods: {
         getData(page) {
             window.axios.get('/api/posts?page=' + page).then((res) => {
-                console.log(res.data)
                 this.postsList = res.data.data
                 this.currentPage = res.data.current_page
                 this.lastPage = res.data.last_page
             })
         },
+        getCategories() {
+            window.axios.get('/api/category').then((res) => {
+                this.categories = res.data
+            })
+        },
     },
     mounted() {
         this.getData(1)
+        this.getCategories()
     }
 }
 </script>
